@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Service Exam Notes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #2c3e50;
+        }
+        .navbar-brand, .nav-link {
+            color: #ecf0f1 !important;
+        }
+        .sidebar {
+            background-color: #34495e;
+            color: #ecf0f1;
+            height: calc(100vh - 56px);
+            position: fixed;
+            top: 56px;
+            left: 0;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            color: #3498db;
+        }
+        .main-content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+        .note-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .note-card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background-color: #3498db;
+            border-color: #3498db;
+        }
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-book-reader me-2"></i>Joint Secretary ExamNotes Pro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-folder me-1"></i>My Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-cog me-1"></i>Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-question-circle me-1"></i>Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-category="all"><i class="fas fa-th-large me-2"></i>All Notes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="GK"><i class="fas fa-book me-2"></i>GK</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="Constitution"><i class="fas fa-landmark me-2"></i>Constitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="Governance"><i class="fas fa-chart-line me-2"></i>Governance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="Administration"><i class="fas fa-globe-americas me-2"></i>Admin & Mgmt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="PublicPolicy"><i class="fas fa-monument me-2"></i>Public Policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="Development"><i class="fas fa-seedling me-2"></i>Development</a>
+                            <a class="nav-link" href="#" data-category="Ethics"><i class="fas fa-seedling me-2"></i>Ethics & Morality</a>
+                            <a class="nav-link" href="#" data-category="PublicAccountability"><i class="fas fa-seedling me-2"></i>Public Accountability</a>
+                            <a class="nav-link" href="#" data-category="Professionalism"><i class="fas fa-seedling me-2"></i>Prof. in PA</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-10 ms-sm-auto main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">My Notes</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newNoteModal">
+                        <i class="fas fa-plus me-2"></i>New Note
+                    </button>
+                </div>
+
+                <div id="notesList" class="row">
+                    <!-- Notes will be dynamically added here -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- New Note Modal -->
+    <div class="modal fade" id="newNoteModal" tabindex="-1" aria-labelledby="newNoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newNoteModalLabel">Create New Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newNoteForm">
+                        <div class="mb-3">
+                            <label for="noteTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="noteTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noteCategory" class="form-label">Category</label>
+                            <select class="form-select" id="noteCategory" required>
+                                <option value="">Choose a category</option>
+                                <option value="GK">0.GK</option>
+                                <option value="Governance">I.1.Governance</option>
+                                <option value="Constitution">I.2.Constitution</option>
+                                <option value="Administration">I.3.Administration & Mgmt</option>
+                                <option value="PublicPolicy">I.4.Public Policy</option>
+                                <option value="Development">I.5.Development</option>
+                                <option value="Ethics">II.1.Ethics & Morality</option>
+                                <option value="PublicAccountability">II.2.Public Accountability</option>
+                                <option value="Professionalism">II.3.Prof. in PA</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noteSubcategory" class="form-label">Subcategory</label>
+                            <select class="form-select" id="noteSubcategory" required>
+                                <option value="">Choose a subcategory</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noteContent" class="form-label">Content</label>
+                            <textarea class="form-control" id="noteContent" rows="5" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noteData" class="form-label">DATA</label>
+                            <textarea class="form-control" id="noteData" rows="3" readonly></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Note</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Note Modal -->
+    <div class="modal fade" id="editNoteModal" tabindex="-1" aria-labelledby="editNoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editNoteModalLabel">Edit Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editNoteForm">
+                        <input type="hidden" id="editNoteIndex">
+                        <div class="mb-3">
+                            <label for="editNoteTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="editNoteTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNoteCategory" class="form-label">Category</label>
+                            <select class="form-select" id="editNoteCategory" required>
+                                <option value="">Choose a category</option>
+                                <option value="GK">GK</option>
+                                <option value="Constitution">Constitution</option>
+                                <option value="Governance">Governance</option>
+                                <option value="Administration">Admin & Magmt</option>
+                                <option value="PublicPolicy">Public Policy</option>
+                                <option value="Development">Development</option>
+                                <option value="Ethics">Ethics & Morality</option>
+                                <option value="PublicAccountability">Public Accountability</option>
+                                <option value="Professionalism">Prof. in PA</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNoteSubcategory" class="form-label">Subcategory</label>
+                            <select class="form-select" id="editNoteSubcategory" required>
+                                <option value="">Choose a subcategory</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNoteContent" class="form-label">Content</label>
+                            <textarea class="form-control" id="editNoteContent" rows="5" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNoteData" class="form-label">DATA</label>
+                            <textarea class="form-control" id="editNoteData" rows="3" readonly></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Store notes in localStorage
+        let notes = JSON.parse(localStorage.getItem('examNotes')) || [];
+
+        // Define subcategories for each category
+        const subcategories = {
+            "GK":["","Data","figure", "example"],
+    "Governance": ["",
+        "1.1 Dimensions, features and indicators of governance",
+        "1.2 The federal, provincial and local level governance",
+        "1.3 New public governance, co-governance, co-construction and co-production of public services",
+        "1.4 Global governance",
+        "1.5 Innovative state",
+        "1.6 Corporate governance system",
+        "1.7 Security challenges and security management in Nepal"
+    ],
+    "Constitution": ["",
+        "2.1 Constitutional development and present constitution of Nepal",
+        "2.2 Democracy and human rights",
+        "2.3 Geopolitics and rights of land-locked and least developed countries"
+    ],
+    "Administration": ["",
+        "3.1 Public management",
+        "3.2 Emerging concept and contemporary issues in administration",
+        "3.3 Administrative reform efforts and challenges in Nepal",
+        "3.4 Administrative system in SAARC countries : issues and achievements",
+        "3.5 Managing human resource in public administration",
+        "3.6 Financial control system"
+    ],
+    "PublicPolicy": ["",
+        "4. Process, issues and current trend"
+    ],
+    "Development": ["",
+        "5.1 Aspects of development - economic, social, political and institutional",
+        "5.2 Nepalese economy and issues relating to planning, mobilization of resources, growth and development",
+        "5.3 Planning in Nepal - efforts, achievements and challenges",
+        "5.4 Development partners in development processes and foreign aid mobilization",
+        "5.5 Civic engagement in development - civil society, NGOs, CBOs, various groups",
+        "5.6 Contemporary development paradigms : Human development, Sustainable development, Public Private Partnership, Economic liberalization and globalization, Economic diplomacy, Intellectual capitals",
+        "5.7 Status and consequences of social diversity in Nepal",
+        "5.8 Diversity management",
+        "5.9 Welfare schemes for weaker/vulnerable sections of the population in Nepal",
+        "5.10 Issues relating to poverty, hunger, unemployment, population and migration",
+        "5.11 State public enterprises : achievements and issues",
+        "5.12 Nepal's commitments, expectations, efforts and obligations: bilateral, regional and multilateral arrangements, conventions and agreements"
+    ],
+   
+    "Ethics": [
+        "1.1 Essence, determinants, consequences and dimensions of ethics",
+        "1.2 Human values - lessons from the lives and teachings of great thinkers, philosophers, reformers and administrators",
+        "1.3 Role of family, society, educational institutions and other relevant institutions in inculcating moral values and responsibilies",
+        "1.4 Basic tenets of eastern philosophy and civilization and their impact on Nepalese society, culture, tradition, values and administrative system",
+        "1.5 Spiritualism in public affairs management",
+        "1.6 Sources of ethical guidance",
+        "1.7 Ethics in public service",
+        "1.8 Principles of public life",
+        "1.9 Power, ethics and ethical organisation",
+        "1.10 Ethical issues in public service delivery and utilization of public funds",
+        "1.11 Challenges of corruption and corruption control strategies"
+    ],
+    "PublicAccountability": [
+        "2.1 Public accountability, democracy and good governance",
+        "2.2 Accountability, responsibility and authority",
+        "2.3 Doctrines and principles of public accountability",
+        "2.4 Public accountability, transparency and open governance",
+        "2.5 Changing concept of public accountability",
+        "2.6 Compliance mechanism of public accountability",
+        "2.7 Nepal's public accountability system"
+    ],
+    "Professionalism": [
+        "3.1 The foundational values for public service - integrity, impartiality, non-partisanship, objectivity, dedication, empathy, tolerance and compassion",
+        "3.2 Applications of public management for developing professionalism:",
+        "3.2.1 Time management",
+        "3.2.2 Resource management",
+        "3.2.3 Change management",
+        "3.2.4 Technology management",
+        "3.2.5 Information management",
+        "3.2.6 Performance Management",
+        "3.2.7 Grievance management",
+        "3.2.8 Team management",
+        "3.2.9 Conflict management",
+        "3.2.10 Crisis management",
+        "3.2.11 Stress management",
+        "3.2.12 Risk management",
+        "3.2.13 Participative management",
+        "3.2.14 Disaster Management",
+        "3.2.15 Work culture",
+        "3.3 Talent management",
+        "3.4 Negotiation skills",
+        "3.5 Organizational behavior and leadership",
+        "3.6 Deprofessionalism tactics",
+        "3.7 Attitude and its relation with thought and behaviour; moral and political attitudes; social influence and persuasion",
+        "3.8 Emotional intelligence and its relevance in public management and governance"
+    ]
+
+};
+        // DOM Elements
+        const notesList = document.getElementById('notesList');
+        const newNoteForm = document.getElementById('newNoteForm');
+        const editNoteForm = document.getElementById('editNoteForm');
+        const newNoteModal = new bootstrap.Modal(document.getElementById('newNoteModal'));
+        const editNoteModal = new bootstrap.Modal(document.getElementById('editNoteModal'));
+
+        // Function to generate DATA string
+        function generateDataString(title, category, subcategory, content) {
+            return `{ title: "${title}", category: "${category}", subcategory: "${subcategory}", content: "${content}" }`;
+        }
+
+        // Function to update DATA field
+        function updateDataField(titleId, categoryId, subcategoryId, contentId, dataId) {
+            const title = document.getElementById(titleId).value;
+            const category = document.getElementById(categoryId).value;
+            const subcategory = document.getElementById(subcategoryId).value;
+            const content = document.getElementById(contentId).value;
+            document.getElementById(dataId).value = generateDataString(title, category, subcategory, content);
+        }
+
+        // Function to populate subcategories based on selected category
+        function populateSubcategories(categorySelectId, subcategorySelectId) {
+            const categorySelect = document.getElementById(categorySelectId);
+            const subcategorySelect = document.getElementById(subcategorySelectId);
+            const selectedCategory = categorySelect.value;
+
+            subcategorySelect.innerHTML = '<option value="">Choose a subcategory</option>';
+
+            if (selectedCategory in subcategories) {
+                subcategories[selectedCategory].forEach(subcategory => {
+                    const option = document.createElement('option');
+                    option.value = subcategory;
+                    option.textContent = subcategory;
+                    subcategorySelect.appendChild(option);
+                });
+            }
+        }
+
+        // Event listeners for input changes and category selection in new note form
+        document.getElementById('noteCategory').addEventListener('change', () => {
+            populateSubcategories('noteCategory', 'noteSubcategory');
+            updateDataField('noteTitle', 'noteCategory', 'noteSubcategory', 'noteContent', 'noteData');
+        });
+
+        ['noteTitle', 'noteCategory', 'noteSubcategory', 'noteContent'].forEach(id => {
+            document.getElementById(id).addEventListener('input', () => 
+                updateDataField('noteTitle', 'noteCategory', 'noteSubcategory', 'noteContent', 'noteData')
+            );
+        });
+
+
+// Event listeners for input changes and category selection in edit note form
+        document.getElementById('editNoteCategory').addEventListener('change', () => {
+            populateSubcategories('editNoteCategory', 'editNoteSubcategory');
+            updateDataField('editNoteTitle', 'editNoteCategory', 'editNoteSubcategory', 'editNoteContent', 'editNoteData');
+        });
+
+        ['editNoteTitle', 'editNoteCategory', 'editNoteSubcategory', 'editNoteContent'].forEach(id => {
+            document.getElementById(id).addEventListener('input', () => 
+                updateDataField('editNoteTitle', 'editNoteCategory', 'editNoteSubcategory', 'editNoteContent', 'editNoteData')
+            );
+        });
+
+        // Function to add a new note
+        function addNewNote(newNote) {
+            if (!notes.some(note => note.title === newNote.title && note.category === newNote.category && note.subcategory === newNote.subcategory)) {
+                notes.push(newNote);
+                localStorage.setItem('examNotes', JSON.stringify(notes));
+            }
+        }
+
+        // Display notes
+        function displayNotes() {
+            notesList.innerHTML = '';
+            notes.forEach((note, index) => {
+                const noteCard = `
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card note-card">
+                            <div class="card-body">
+                                <h5 class="card-title">${note.title}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${note.category} - ${note.subcategory || 'N/A'}</h6>
+                                <p class="card-text">${note.content.substring(0, 100)}...</p>
+                                <button onclick="editNote(${index})" class="btn btn-sm btn-outline-primary me-2">
+                                    <i class="fas fa-edit me-1"></i>
+                                </button>
+                                <button onclick="deleteNote(${index})" class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-trash-alt me-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                notesList.innerHTML += noteCard;
+            });
+        }
+
+        // Add new note
+        newNoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newNote = {
+                title: document.getElementById('noteTitle').value,
+                category: document.getElementById('noteCategory').value,
+                subcategory: document.getElementById('noteSubcategory').value,
+                content: document.getElementById('noteContent').value
+            };
+            addNewNote(newNote);
+            newNoteForm.reset();
+            newNoteModal.hide();
+            displayNotes();
+        });
+
+        // Edit note
+        function editNote(index) {
+            const note = notes[index];
+            document.getElementById('editNoteTitle').value = note.title;
+            document.getElementById('editNoteCategory').value = note.category;
+            populateSubcategories('editNoteCategory', 'editNoteSubcategory');
+            document.getElementById('editNoteSubcategory').value = note.subcategory || '';
+            document.getElementById('editNoteContent').value = note.content;
+            document.getElementById('editNoteIndex').value = index;
+            updateDataField('editNoteTitle', 'editNoteCategory', 'editNoteSubcategory', 'editNoteContent', 'editNoteData');
+            editNoteModal.show();
+        }
+
+        editNoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const index = document.getElementById('editNoteIndex').value;
+            notes[index] = {
+                title: document.getElementById('editNoteTitle').value,
+                category: document.getElementById('editNoteCategory').value,
+                subcategory: document.getElementById('editNoteSubcategory').value,
+                content: document.getElementById('editNoteContent').value
+            };
+            localStorage.setItem('examNotes', JSON.stringify(notes));
+            editNoteForm.reset();
+            editNoteModal.hide();
+            displayNotes();
+        });
+
+        // Delete note
+        function deleteNote(index) {
+            if (confirm('Are you sure you want to delete this note?')) {
+                notes.splice(index, 1);
+                localStorage.setItem('examNotes', JSON.stringify(notes));
+                displayNotes();
+            }
+        }
+
+        // Filter notes by category
+        function filterNotes(category) {
+            const filteredNotes = category === 'all' ? notes : notes.filter(note => note.category === category);
+            displayFilteredNotes(filteredNotes);
+        }
+
+        function displayFilteredNotes(filteredNotes) {
+            notesList.innerHTML = '';
+            filteredNotes.forEach((note, index) => {
+                const noteCard = `
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card note-card">
+                            <div class="card-body">
+                                <h5 class="card-title">${note.title}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${note.category} - ${note.subcategory || 'N/A'}</h6>
+                                <p class="card-text">${note.content.substring(0, 100)}...</p>
+                                <button onclick="editNote(${notes.indexOf(note)})" class="btn btn-sm btn-outline-primary me-2">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </button>
+                                <button onclick="deleteNote(${notes.indexOf(note)})" class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-trash-alt me-1"></i>Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                notesList.innerHTML += noteCard;
+            });
+        }
+
+        // Initial display of notes
+        displayNotes();
+
+        // Event listeners for sidebar links
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = e.target.getAttribute('data-category');
+                filterNotes(category);
+            });
+        });
+
+        // Add some initial notes if the notes array is empty
+        if (notes.length === 0) {
+            const initialNotes = [
+                { title: "Preamble", category: "Constitution", subcategory: "Fundamental Rights", content: "Preamble is the mirror of the constitution." },
+                { title: "Pokhara", category: "Administration", subcategory: "Organization Theory", content: "Pokhara is the tourism capital of Nepal." },
+                { title: "Shiva", category: "PublicPolicy", subcategory: "Policy Analysis", content: "Shiva is the supreme lord in Hindu mythology." },
+                { title: "Debaka", category: "Professionalism", subcategory: "3.2.10 Crisis management", content: "is it the content of professionalism?" }
+            ];
+            initialNotes.forEach(addNewNote);
+            displayNotes();
+        }
+    </script>
+</body>
+</html>
