@@ -204,6 +204,7 @@
                             <label for="editNoteCategory" class="form-label">Category</label>
                             <select class="form-select" id="editNoteCategory" required>
                                 <option value="">Choose a category</option>
+                                <option value="Null"></option>
                                 <option value="GK">GK</option>
                                 <option value="Constitution">Constitution</option>
                                 <option value="Governance">Governance</option>
@@ -213,6 +214,7 @@
                                 <option value="Ethics">Ethics & Morality</option>
                                 <option value="PublicAccountability">Public Accountability</option>
                                 <option value="Professionalism">Prof. in PA</option>
+                                <option value="Other">Others</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -246,6 +248,7 @@
 
         // Define subcategories for each category
         const subcategories = {
+"Null": [""]
             "GK":["","Data","figure", "example"],
     "Governance": ["",
         "1.1 Dimensions, features and indicators of governance",
@@ -333,7 +336,8 @@
         "3.6 Deprofessionalism tactics",
         "3.7 Attitude and its relation with thought and behaviour; moral and political attitudes; social influence and persuasion",
         "3.8 Emotional intelligence and its relevance in public management and governance"
-    ]
+    ],
+"Other": ["", "Others"]
 
 };
         // DOM Elements
