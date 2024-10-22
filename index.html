@@ -68,50 +68,51 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-    <a class="nav-link active" href="#" data-category="all"><i class="fas fa-th-large me-2"></i>All Notes</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="no"><i class="fas fa-times-circle me-2"></i>NO NOTES</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="rem"><i class="fas fa-bell me-2"></i>Reminder</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="mem"><i class="fas fa-brain me-2"></i>Memorize</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="imp"><i class="fas fa-exclamation-circle me-2"></i>Important</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="GK"><i class="fas fa-globe me-2"></i>GK</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="Constitution"><i class="fas fa-scroll me-2"></i>Constitution</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="Governance"><i class="fas fa-balance-scale me-2"></i>Governance</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="Administration"><i class="fas fa-tasks me-2"></i>Admin & Mgmt</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="PublicPolicy"><i class="fas fa-file-alt me-2"></i>Public Policy</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="Development"><i class="fas fa-chart-line me-2"></i>Development</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="Ethics"><i class="fas fa-handshake me-2"></i>Ethics & Morality</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="PublicAccountability"><i class="fas fa-user-shield me-2"></i>Accountability</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="Professionalism"><i class="fas fa-briefcase me-2"></i>Prof. in PA</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#" data-category="Other"><i class="fas fa-ellipsis-h me-2"></i>Others</a>
-</li>
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-folder me-1"></i>My Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-cog me-1"></i>Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-question-circle me-1"></i>Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-category="all"><i class="fas fa-th-large me-2"></i>All Notes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="GK"><i class="fas fa-book me-2"></i>GK</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="Constitution"><i class="fas fa-landmark me-2"></i>Constitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="Governance"><i class="fas fa-chart-line me-2"></i>Governance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="Administration"><i class="fas fa-globe-americas me-2"></i>Admin & Mgmt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="PublicPolicy"><i class="fas fa-monument me-2"></i>Public Policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-category="Development"><i class="fas fa-seedling me-2"></i>Development</a>
+                            <a class="nav-link" href="#" data-category="Ethics"><i class="fas fa-seedling me-2"></i>Ethics & Morality</a>
+                            <a class="nav-link" href="#" data-category="PublicAccountability"><i class="fas fa-seedling me-2"></i>Public Accountability</a>
+                            <a class="nav-link" href="#" data-category="Professionalism"><i class="fas fa-seedling me-2"></i>Prof. in PA</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -149,10 +150,6 @@
                             <label for="noteCategory" class="form-label">Category</label>
                             <select class="form-select" id="noteCategory" required>
                                 <option value="">Choose a category</option>
-                                <option value="null">***</option>
-                                <option value="imp">Important</option>
-                                <option value="rem">Reminder</option>
-                                <option value="mem">Memorize</option>
                                 <option value="GK">0.GK</option>
                                 <option value="Governance">I.1.Governance</option>
                                 <option value="Constitution">I.2.Constitution</option>
@@ -162,7 +159,6 @@
                                 <option value="Ethics">II.1.Ethics & Morality</option>
                                 <option value="PublicAccountability">II.2.Public Accountability</option>
                                 <option value="Professionalism">II.3.Prof. in PA</option>
-                                <option value="Other">Others/option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -208,10 +204,6 @@
                             <label for="editNoteCategory" class="form-label">Category</label>
                             <select class="form-select" id="editNoteCategory" required>
                                 <option value="">Choose a category</option>
-                                <option value="Null">*
-                                
-                                </option>
-                                <option value="Null">***</option>
                                 <option value="GK">GK</option>
                                 <option value="Constitution">Constitution</option>
                                 <option value="Governance">Governance</option>
@@ -221,7 +213,6 @@
                                 <option value="Ethics">Ethics & Morality</option>
                                 <option value="PublicAccountability">Public Accountability</option>
                                 <option value="Professionalism">Prof. in PA</option>
-                                <option value="Other">Others</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -255,7 +246,6 @@
 
         // Define subcategories for each category
         const subcategories = {
-"Null": ["", "imp"],
             "GK":["","Data","figure", "example"],
     "Governance": ["",
         "1.1 Dimensions, features and indicators of governance",
@@ -343,8 +333,7 @@
         "3.6 Deprofessionalism tactics",
         "3.7 Attitude and its relation with thought and behaviour; moral and political attitudes; social influence and persuasion",
         "3.8 Emotional intelligence and its relevance in public management and governance"
-    ],
-"Other": ["", "Others"]
+    ]
 
 };
         // DOM Elements
